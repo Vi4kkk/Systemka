@@ -1,44 +1,37 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        //вводим размер массива
-        System.out.print("Введите размер массива: ");
-        Scanner scanner = new Scanner(System.in);
-        int arraySize = scanner.nextInt(); //инициализируем размер массива
-        int[] array = new int[arraySize]; //создаем массив заданного размера
+        System.out.print("введите размер массива: ");
+        Scanner scanner = new Scanner(System.in); //Объект сканера для считываня ввода
+        int arraySize = scanner.nextInt(); //инициализация размера массива
+        int[] array = new int[arraySize]; //создание массива заданного размера
 
-        //вводим элементы массива
-        System.out.println("Введите элементы массива: ");
-        for (int index = 0; index < arraySize; index++) {
-            array[index] = scanner.nextInt(); //заполняем массив элементами
+        System.out.println("введите элементы массива: ");
+        for (int index = 0; index < arraySize; index++) { //заполняем массив через цикл
+            array[index] = scanner.nextInt(); //считывание поо индексу
         }
 
-        //вводим степень мажоритарности
-        System.out.println("Введите степень мажоритарности (%): ");
-        int Porog = scanner.nextInt(); //инициализируем степень мажоритарности
+        System.out.println("введите степень мажоритарности (%): ");
+        int Porog = scanner.nextInt(); //порог мажоритарности
 
-        int Vhod = 0; //переменная для подсчета вхождений
-        int major = 0; //переменная для хранения мажоритарного числа
+        int Vhod = 0; //переменная подсчета вхождений
+        int major = 0; //переменная хранения мажоритарного числа
 
-        //поиск мажоритарного числа
-        for (int i = 0; i < arraySize; i++) {
-            for (int j = 0; j < arraySize; j++) {
-                //проверяем, не совпадают ли индексы и равны ли элементы
-                if (i != j && array[i] == array[j]) {
+        for (int i = 0; i < arraySize; i++) { //перебор эллементов массива ВНЕШНИЙ ЦИКЛ
+            for (int j = 0; j < arraySize; j++) { //сравнение текущего эллемента с другими
+                if (i != j && array[i] == array[j]) { //если индексы различны и элементы равны
                     Vhod += 1; //увеличиваем счетчик вхождений
                 }
             }
-            //проверяем, соответствует ли количество вхождений порогу
-            if (Vhod >= (arraySize * Porog) / 100) {
-                major = array[i]; //устанавливаем мажоритарное число
+            //проверяем соответствует ли количество вхождений порогу
+            if (Vhod >= (arraySize * Porog) / 100) { //проверка достаточно ли количество встреч числа чтобы быть мажоритарным
+                major = array[i]; //устанавливаем текущее число как мажоритарное
                 i = arraySize; //выходим из внешнего цикла
             } else {
                 Vhod = 0; //обнуляем счетчик вхождений
             }
         }
-
-        //выводим результат
-        System.out.println("Мажоритарное число: " + major);
+        System.out.println("мажоритарное число: " + major);
     }
 }
