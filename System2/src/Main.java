@@ -50,7 +50,7 @@ public class Main {
 
         //выводим ответ или -1, если результат не найден
         if (answer != -1) {
-            System.out.println(answer);
+            System.out.println("минимальное число кратное 21, и являющееся произведением 2 других чисел: "+answer);
         } else {
             System.out.println(-1);
         }
