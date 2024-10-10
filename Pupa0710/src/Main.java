@@ -4,7 +4,6 @@ import java.util.concurrent.*;
 
 public class Main {
 
-    // Метод для копирования файла с использованием потоков
     private static void copyFileUsingStream(File source, File dest) throws IOException {
         InputStream is = null; //объявляем переменную для входного потока (чтение)
         OutputStream os = null; //объявляем переменную для выходного потока (запись)
